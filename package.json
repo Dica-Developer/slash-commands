@@ -1,25 +1,27 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.1.2",
-  "description": "A sample Node.js app using Express 4",
-  "main": "index.js",
+  "name": "slash-comamnds",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js"
-  },
-  "dependencies": {
-    "express": "~4.9.x"
-  },
-  "engines": {
-    "node": "0.10.x"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/dica-devloper/slash-commands"
+  },
+  "engines": {
+    "node": "0.12.x"
   },
   "keywords": [
     "node",
     "heroku",
     "express"
   ],
-  "license": "MIT"
+  "dependencies": {
+    "express": "4.12.2"
+  },
+  "author": "",
+  "license": "GPL3"
 }
