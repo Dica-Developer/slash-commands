@@ -15,8 +15,12 @@ app.get('/wetter', function(request, response) {
         body = body + chunk;
       });
       weatherResponse.on('end', function(chunk) {
-        var weatherDescription = JSON.parse(body).weather[0].description;
-        response.send('/giphy ' + weatherDescription);
+        var resBody = '';
+        for (var i = 0; i < JSON.parse(body).weather.length; i++) {
+          var iconId = JSON.parse(body).weather[i].icon;
+          resBody = resBody + 'http://openweathermap.org/img/w/' + iconId + '.png ';
+        }
+        response.send(resBody);
       });
     }).on('error', function() {
       response.send('No weather for you today.');
