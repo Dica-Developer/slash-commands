@@ -11,12 +11,11 @@ app.get('/wetter', function(request, response) {
   if (url.query) {
     var query = url.query;
     if (query.hasOwnProperty('text')) {
-      http.get('http://api.openweathermap.org/data/2.5/weather?q=' + query.text, function(response) {
-        response.send(response);
+      http.get('https://api.openweathermap.org/data/2.5/weather?q=' + query.text, function(weatherResponse) {
+        response.send(weatherResponse);
       }).on('error', function() {
         response.send('No weather for you today!!!');
       });
-
     }
   }
 });
