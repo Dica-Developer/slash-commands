@@ -9,7 +9,7 @@ app.use(express.static(__dirname + '/public'));
 app.get('/wetter', function(request, response) {
   var url = Url.parse(request.url, true);
   if (null !== url.query && undefined !== url.query && url.query.hasOwnProperty('text')) {
-    http.get('http://api.openweathermap.org/data/2.5/weather?lang=de&q=' + url.query.text, function(weatherResponse) {
+    http.get('http://api.openweathermap.org/data/2.5/weather?APPID=' + process.env.OWM_APPID + '&lang=de&q=' + url.query.text, function(weatherResponse) {
       var body = '';
       weatherResponse.on('data', function(chunk) {
         body = body + chunk;
@@ -33,7 +33,7 @@ app.get('/wetter', function(request, response) {
 app.get('/weather', function(request, response) {
   var url = Url.parse(request.url, true);
   if (null !== url.query && undefined !== url.query && url.query.hasOwnProperty('text')) {
-    http.get('http://api.openweathermap.org/data/2.5/weather?&q=' + url.query.text, function(weatherResponse) {
+    http.get('http://api.openweathermap.org/data/2.5/weather?APPID=' + process.env.OWM_APPID + '&q=' + url.query.text, function(weatherResponse) {
       var body = '';
       weatherResponse.on('data', function(chunk) {
         body = body + chunk;
@@ -57,7 +57,7 @@ app.get('/weather', function(request, response) {
 app.get('/willItBeRain', function(request, response) {
   var url = Url.parse(request.url, true);
   if (null !== url.query && undefined !== url.query && url.query.hasOwnProperty('text')) {
-    http.get('http://api.openweathermap.org/data/2.5/forecast/hourly?&q=' + url.query.text, function(weatherResponse) {
+    http.get('http://api.openweathermap.org/data/2.5/forecast/hourly?APPID=' + process.env.OWM_APPID + '&q=' + url.query.text, function(weatherResponse) {
       var body = '';
       weatherResponse.on('data', function(chunk) {
         body = body + chunk;
